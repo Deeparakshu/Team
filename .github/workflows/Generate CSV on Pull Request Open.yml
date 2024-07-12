@@ -1,0 +1,25 @@
+name: Generate CSV on Pull Request Open
+
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  generate-csv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate CSV file
+        run: |
+          echo "Column1,Column2,Column3" > generated_file.csv
+          echo "Data1,Data2,Data3" >> generated_file.csv
+
+      - name: Commit CSV file
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add generated_file.csv
+          git commit -m "Add generated CSV file"
+          git push
