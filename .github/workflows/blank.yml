@@ -1,0 +1,10 @@
+name: Hello World
+on: [push]  # This workflow will run on pushes to the repository
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+
+    steps:
+    - name: Say Hello
+      run: echo "Hello, world!"
